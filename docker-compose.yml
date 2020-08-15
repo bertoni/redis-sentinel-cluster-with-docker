@@ -1,0 +1,268 @@
+version: '2'
+services:
+  redis1:
+    image: redis:6-alpine
+    container_name: redis1
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    command: ["redis-server", "--protected-mode no"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.11
+
+  redis2:
+    image: redis:6-alpine
+    container_name: redis2
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    depends_on:
+      - redis1
+    command: ["redis-server", "--protected-mode no", "--slaveof redis1 6379"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.12
+
+  redis3:
+    image: redis:6-alpine
+    container_name: redis3
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    depends_on:
+      - redis1
+    command: ["redis-server", "--protected-mode no", "--slaveof redis1 6379"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.13
+
+  redis4:
+    image: redis:6-alpine
+    container_name: redis4
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    depends_on:
+      - redis1
+    command: ["redis-server", "--protected-mode no", "--slaveof redis1 6379"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.14
+
+  redis5:
+    image: redis:6-alpine
+    container_name: redis5
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    depends_on:
+      - redis1
+    command: ["redis-server", "--protected-mode no", "--slaveof redis1 6379"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.15
+
+  redis6:
+    image: redis:6-alpine
+    container_name: redis6
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    depends_on:
+      - redis1
+    command: ["redis-server", "--protected-mode no", "--slaveof redis1 6379"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.16
+
+  redis7:
+    image: redis:6-alpine
+    container_name: redis7
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    depends_on:
+      - redis1
+    command: ["redis-server", "--protected-mode no", "--slaveof redis1 6379"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.17
+
+  redis8:
+    image: redis:6-alpine
+    container_name: redis8
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    depends_on:
+      - redis1
+    command: ["redis-server", "--protected-mode no", "--slaveof redis1 6379"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.18
+
+  redis9:
+    image: redis:6-alpine
+    container_name: redis9
+    mem_limit: 1g
+    restart: on-failure
+    ports:
+      - 6379-6389:6379
+    depends_on:
+      - redis1
+    command: ["redis-server", "--protected-mode no", "--slaveof redis1 6379"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.19
+
+  sentinel1:
+    image: redis:6-alpine
+    container_name: sentinel1
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel1.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.21
+
+  sentinel2:
+    image: redis:6-alpine
+    container_name: sentinel2
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel2.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.22
+
+  sentinel3:
+    image: redis:6-alpine
+    container_name: sentinel3
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel3.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.23
+
+  sentinel4:
+    image: redis:6-alpine
+    container_name: sentinel4
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel4.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.24
+
+  sentinel5:
+    image: redis:6-alpine
+    container_name: sentinel5
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel5.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.25
+
+  sentinel6:
+    image: redis:6-alpine
+    container_name: sentinel6
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel6.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.26
+
+  sentinel7:
+    image: redis:6-alpine
+    container_name: sentinel7
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel7.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.27
+
+  sentinel8:
+    image: redis:6-alpine
+    container_name: sentinel8
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel8.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.28
+
+  sentinel9:
+    image: redis:6-alpine
+    container_name: sentinel9
+    mem_limit: 256m
+    ports:
+      - 26379-26389:26379
+    volumes:
+      - ./conf/sentinel9.conf:/etc/sentinel.conf
+    depends_on:
+      - redis1
+    command: ["redis-sentinel", "/etc/sentinel.conf"]
+    networks:
+      redis_net:
+        ipv4_address: 10.15.0.29
+
+networks:
+  redis_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.15.0.0/16
+          gateway: 10.15.0.1
