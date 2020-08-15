@@ -6,7 +6,7 @@ The quorum configured was 3, that accept lose until 4 nodes (containers in this 
 
 ### commands
 
-There is a [page with the main commands](COMMANDS.md) of redis/sentinel that you will use to interact with them.
+There is a [page with the main commands](COMMANDS.MD) of redis/sentinel that you will use to interact with them.
 
 ### References
 - https://medium.com/@amila922/redis-sentinel-high-availability-everything-you-need-to-know-from-dev-to-prod-complete-guide-deb198e70ea6
